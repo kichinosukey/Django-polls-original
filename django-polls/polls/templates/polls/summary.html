@@ -1,0 +1,55 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+
+<a href={% url 'polls:index' %}><h1>Summary</h1></a>
+<p>
+<h2>集計結果</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Question</th>
+            <th>Choice-01</th>
+            <th>Choice-02</th>
+            <th>Choice-03</th>
+            <th>Choice-04</th>
+            <th>Choice-05</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for question, cv in summary.items %}
+        <tr>
+            <td>{{ question }}</td>
+            {% for choice, votes in cv.items %}
+                <td>{{ votes }}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</p>
+<p>
+<h2>設問一覧</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Question</th>
+            <th>Choice-01</th>
+            <th>Choice-02</th>
+            <th>Choice-03</th>
+            <th>Choice-04</th>
+            <th>Choice-05</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for question, cv in summary.items %}
+        <tr>
+            <td>{{ question }}</td>
+            {% for choice, votes in cv.items %}
+                <td>{{ choice }}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</p>
